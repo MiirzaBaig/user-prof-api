@@ -13,9 +13,9 @@ const { protect, checkProfileOwnership } = require('../middleware/auth');
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 
-// Protected routes (Future implementation)
-router.get('/', getAllProfiles);
-router.get('/:id', checkProfileOwnership, getProfile);
-router.put('/:id', checkProfileOwnership, updateProfile);
+// Protected routes
+router.get('/', protect, getAllProfiles);
+router.get('/:id', protect, checkProfileOwnership, getProfile);
+router.put('/:id', protect, checkProfileOwnership, updateProfile);
 
 module.exports = router;

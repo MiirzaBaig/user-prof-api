@@ -95,7 +95,7 @@ exports.loginUser = async (req, res) => {
 
 // @desc    Get user profile
 // @route   GET /api/users/:id
-// @access  public
+// @access  Private (only owner)
 exports.getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -122,7 +122,7 @@ exports.getProfile = async (req, res) => {
 
 // @desc    Update user profile
 // @route   PUT /api/users/:id
-// @access  public
+// @access  Private (only owner)
 exports.updateProfile = async (req, res) => {
   try {
     // Remove password from update fields (password update should be separate)
@@ -163,7 +163,7 @@ exports.updateProfile = async (req, res) => {
 
 // @desc    Get all profiles (for admin, could be limited in production)
 // @route   GET /api/users
-// @access  public
+// @access  Private 
 exports.getAllProfiles = async (req, res) => {
   try {
     const users = await User.find();
